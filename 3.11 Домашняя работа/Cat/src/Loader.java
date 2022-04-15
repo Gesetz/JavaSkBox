@@ -66,6 +66,16 @@ public class Loader
         System.out.println("Котенок 1 " + kitty1.getWeight());
         System.out.println("Котенок 2 " + kitty2.getWeight());
         System.out.println("Котенок 3 " + kitty3.getWeight());
+
+        // 7.1 Делаю клон кошки
+        gosha.setColor("White");
+        Cat catClone1 = gosha.cloneThisCat(gosha);
+        catClone1.setColor("Red");
+        System.out.println("Цвет клона: " + catClone1.getColor());
+        System.out.println("Вес клона: " + catClone1.getWeight());
+        System.out.println("Цвет оригинала: " + gosha.getColor());
+        System.out.println("Вес оригинала: " + gosha.getWeight());
+
     }
 
     //5.2.	Создайте в главном классе Loader метод генерации котёнка private static Cat getKitten().

@@ -31,19 +31,43 @@ public class Cat
         isAlive = true;
     }
 
+    // 1.	Сделайте в классе Cat ещё один конструктор, чтобы можно было создать кошку с весом, переданным в конструктор.
+    public Cat (double catWeight){
+        this();
+        this.weight = catWeight;
+    }
+
+    // 1.	Сделайте метод создания «глубокой» копии кошки. Это означает, что все параметры одной кошки равны параметрам
+    // другой. Используйте для этого метод копирования или конструктор копирования.
+
+    public Cat(double weight, boolean isAlive){
+        this();
+        this.weight = weight;
+        this.minWeight = weight;
+        this.maxWeight = weight;
+        this.isAlive = isAlive;
+    }
+
+    public Cat cloneThisCat2(Cat anotherCat){
+        Cat catClone = new Cat(anotherCat.getWeight(), anotherCat.isAlive);
+        System.out.println("Кошка склонирована");
+        return catClone;
+    }
+
+    public Cat cloneThisCat(Cat anotherCat){
+        Cat catClone = new Cat(anotherCat.weight, anotherCat.isAlive);
+        System.out.println("Кошка склонирована");
+        return catClone;
+    }
+
     //6.2.	Создайте в классе Cat переменную, в которой хранится окрас. Напишите геттер и сеттер для окраса
     public void setColor(String color){
         this.catColor = color;
     }
 
-    public String getCatColor(){
-        return catColor;
-    }
 
-    // 1.	Сделайте в классе Cat ещё один конструктор, чтобы можно было создать кошку с весом, переданным в конструктор.
-    public Cat (double catWeight){
-        this();
-        this.weight = catWeight;
+    public String getColor(){
+        return catColor;
     }
 
     public void meow()
