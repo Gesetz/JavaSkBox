@@ -13,29 +13,29 @@ public class Start {
 //        Пример
 //        Первоначальный массив: [“a”, “b”, “c”, “d”].
 //        Массив с элементами в обратном порядке: [“d”, “c”, “b”, “a”].
-        String[] array1 = {"Каждый", "охотник", "желает", "знать,", "где", "сидит", "фазан."};
+//        String[] array1 = {"Каждый", "охотник", "желает", "знать,", "где", "сидит", "фазан."};
 
 //        System.out.println("Размер массива:" + array1.length);
-
-        // Создаю массив одного размера
-        String array2[] = new String[array1.length];
-
-        // В обратном порядке перегоняю элементы одного массива в другой.
-
-        for (int i = array1.length - 1; i >= 0; i--){
-           array2[array1.length - 1 - i] = array1[i];
-        }
+//
+//        // Создаю массив одного размера
+//        String array2[] = new String[array1.length];
+//
+//        // В обратном порядке перегоняю элементы одного массива в другой.
+//
+//        for (int i = array1.length - 1; i >= 0; i--){
+//           array2[array1.length - 1 - i] = array1[i];
+//        }
 
         // Проверяю, что получилось
 //        System.out.println("array1: ");
-        for (String word: array1) {
+//        for (String word: array1) {
 //            System.out.printf(word + " ");
-        }
-
+//        }
+//
 //        System.out.println("array2: ");
-        for (String word: array2) {
+//        for (String word: array2) {
 //            System.out.printf(word + " ");
-        }
+//        }
 
 //        Задание №2
 //        Что нужно сделать
@@ -68,7 +68,7 @@ public class Start {
 //        Количество здоровых: 1
         float allTemps = 0;
         int healthyPeople = 0;
-        System.out.printf("Температура пациентов: ");
+        System.out.print("Температура пациентов: ");
         for (float temp: temps){
             allTemps = allTemps + temp;
             System.out.printf(df.format(temp) + " ");
@@ -76,7 +76,7 @@ public class Start {
                 healthyPeople++;
             }
         }
-        System.out.println("");
+        System.out.println();
         System.out.println("Средняя температура: " + df.format(allTemps/patients));
 
         System.out.println("Количество здоровых: " + healthyPeople);
@@ -104,16 +104,16 @@ public class Start {
             }
         }
         for (String[] arrayI: simbolX){
-            System.out.println("");
+            System.out.println();
             for (String line: arrayI) {
                 System.out.printf(line);
             }
         }
-        System.out.println("");
-//Разработайте список дел, который управляется командами в консоли. Команды: LIST, ADD, EDIT, DELETE. 
+        System.out.println();
+//Разработайте список дел, который управляется командами в консоли. Команды: LIST, ADD, EDIT, DELETE.
 //Принцип работы команд:
 //	•	LIST — выводит дела с их порядковыми номерами;
-//	•	ADD — добавляет дело в конец списка или дело на определённое место, сдвигая остальные дела вперёд, если указать номер; 
+//	•	ADD — добавляет дело в конец списка или дело на определённое место, сдвигая остальные дела вперёд, если указать номер;
 //	•	EDIT — заменяет дело с указанным номером;
 //	•	DELETE — удаляет.
 //        Примеры команд
@@ -121,30 +121,37 @@ public class Start {
 //	•	ADD Какое-то дело
 //	•	ADD 4 Какое-то дело на четвёртом месте
 //	•	EDIT 3 Новое название дела
-//	•	DELETE 7 
+//	•	DELETE 7
 //Команды вводятся одной строкой пользователем в консоль.
 
         ArrayList<String> todoList = new ArrayList<>();
 
         Scanner in = new Scanner(System.in);
         System.out.print("Введите команду: ");
-        String input = in.nextLine();
+
+        String input = in.nextLine().trim();
 
         System.out.println("Вы ввели: " + input);
 
+
         // Распарсить выражение, найти команду
-        String command = new String();
-        String text = new String();
+
+        String command[] = input.split(" ");
+
+        String text = "";
         int positionInList;
 
         // Выполнить действие
-        switch (command) {
+        switch (command[0]) {
             case ("LIST"):
 //                @ something
+                System.out.println("Команда List");
                 break;
             case ("ADD"):
+                System.out.println("Команда ADD");
                 break;
             case ("EDIT"):
+                System.out.println("Команда EDIT");
                 break;
             default:
                 break;
