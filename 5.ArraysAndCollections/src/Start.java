@@ -130,9 +130,10 @@ public class Start {
 //	•	EDIT 3 Новое название дела
 //	•	DELETE 7
 //Команды вводятся одной строкой пользователем в консоль.
-while (true) {
+
     ArrayList<String> todoList = new ArrayList<>();
 
+    while (true) {
     Scanner in = new Scanner(System.in);
     System.out.print("Введите команду: ");
 
@@ -156,17 +157,22 @@ while (true) {
     int whereTaskStart = 1;
     int whereTheTaskPut;
 
+//     Далаю так, чтобы одиночные команды срабатывали.
+        if (command.length != 1) {
 //        Понять, есть ли порядковый номер у элементы у команды
 //        Пытаюсь найти и запихнуть номер в переменную
-    try {
-        int intValue = Integer.parseInt(command[1]);
+            try {
+                int intValue = Integer.parseInt(command[1]);
 
-        whereTaskStart = 2;
-        whereTheTaskPut = intValue;
-        System.out.println("Порядковый номер задачи установлен и равен: " + whereTheTaskPut);
-    } catch (NumberFormatException e) {
-        System.out.println("Порядковый номер задачи не установлен");
-    }
+                whereTaskStart = 2;
+                whereTheTaskPut = intValue;
+                System.out.println("Порядковый номер задачи установлен и равен: " + whereTheTaskPut);
+            } catch (NumberFormatException e) {
+                System.out.println("Порядковый номер задачи не установлен");
+            } catch (ArrayIndexOutOfBoundsException e) {
+                System.out.println("Не смог распознать команду. Попробуйте в формате \"КОМАНДА Номер(опция) Задача\"");
+            }
+        }
 
     // Собираю задачу обратно
     String task = "";
@@ -186,11 +192,13 @@ while (true) {
     // Выполнить действие
     switch (command[0].toUpperCase()) {
         case ("LIST"):
-//                @ something
             System.out.println("Команда List");
+            for (int i = 0; i < todoList.size(); i++)
+            System.out.println("№ " + i + ": " + todoList.get(i));
             break;
         case ("ADD"):
             System.out.println("Команда ADD");
+            todoList.add(task);
             break;
         case ("EDIT"):
             System.out.println("Команда EDIT");
