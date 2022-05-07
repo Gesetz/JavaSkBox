@@ -1,4 +1,3 @@
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -132,6 +131,9 @@ public class Start {
 //Команды вводятся одной строкой пользователем в консоль.
 
     ArrayList<String> todoList = new ArrayList<>();
+    todoList.add("Дефолтная первая задача");
+    todoList.add("Дефолтная вторая задача");
+
 
     while (true) {
     Scanner in = new Scanner(System.in);
@@ -140,7 +142,7 @@ public class Start {
     String input = in.nextLine().trim();
 
     // Отладка
-    System.out.println("Вы ввели: " + input);
+//    System.out.println("Вы ввели: " + input);
 
 
     // Распарсить выражение, найти команду
@@ -150,9 +152,9 @@ public class Start {
     int positionInList;
 
 //        Отладка
-    for (String word : command) {
-        System.out.println(word);
-    }
+//    for (String word : command) {
+//        System.out.println(word);
+//    }
 
     int whereTaskStart = 1;
     int whereTheTaskPut;
@@ -184,25 +186,43 @@ public class Start {
         }
 
     }
-    System.out.println("Задача звучит так: " + task);
+//    System.out.println("Задача звучит так: " + task);
 
 
-    System.out.println(whereTaskStart);
+//    System.out.println("Задача начинается с элемента " + whereTaskStart);
 
     // Выполнить действие
     switch (command[0].toUpperCase()) {
         case ("LIST"):
-            System.out.println("Команда List");
+//            System.out.println("Команда List");
             for (int i = 0; i < todoList.size(); i++)
             System.out.println("№ " + i + ": " + todoList.get(i));
             break;
         case ("ADD"):
-            System.out.println("Команда ADD");
-            todoList.add(task);
+//            ADD — добавляет дело в конец списка или дело на определённое место, сдвигая остальные дела вперёд, если указать номер;
+            if ((whereTaskStart != 1) && (Integer.parseInt(command[1]) - 1 < todoList.size())){
+                todoList.add(Integer.parseInt(command[1]),task);
+            }else {
+                todoList.add(task);
+            }
+//            System.out.println("Команда ADD");
             break;
         case ("EDIT"):
-            System.out.println("Команда EDIT");
+//            EDIT — заменяет дело с указанным номером;
+//            System.out.println("Команда EDIT");
+            if ((whereTaskStart != 1) && (Integer.parseInt(command[1]) - 1 < todoList.size())){
+                todoList.set(Integer.parseInt(command[1]),task);
+            }else {
+                todoList.add(task);
+            }
             break;
+        case ("DELETE"):
+            if ((whereTaskStart != 1) && (Integer.parseInt(command[1]) - 1 < todoList.size())){
+                todoList.remove(Integer.parseInt(command[1]));
+            }else {
+                System.out.println("Неправильно задан номер задачи для удаления");
+                break;
+            }
         default:
             break;
     }
