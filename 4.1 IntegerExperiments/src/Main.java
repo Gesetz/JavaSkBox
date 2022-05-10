@@ -47,8 +47,8 @@ public class Main
 //        В каждый контейнер — не более 27 ящиков.
 //        Ящики, контейнеры и грузовики пронумерованы.
 
-        final int TRUCK_CAPACITY = 12;
-        final int CONTAINER_CAPACITY = 27;
+        final int TRUCK_CAPACITY = 5;
+        final int CONTAINER_CAPACITY = 35;
 
         int boxNumber = 1;
         int containerNumber = 1;
