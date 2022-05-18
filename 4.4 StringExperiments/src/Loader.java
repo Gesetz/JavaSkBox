@@ -57,7 +57,7 @@ public class Loader
 
 
         List<String> allMatches = new ArrayList<String>();
-        Matcher m = Pattern.compile("\\d{1,}")
+        Matcher m = Pattern.compile("\\d+")
                 .matcher(text);
         while (m.find()) {
             allMatches.add(m.group());
