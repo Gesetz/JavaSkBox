@@ -57,7 +57,7 @@ public class Loader
 
 
         List<String> allMatches = new ArrayList<String>();
-        Matcher m = Pattern.compile("[0-9]{1,100}")
+        Matcher m = Pattern.compile("\\d{1,}")
                 .matcher(text);
         while (m.find()) {
             allMatches.add(m.group());
