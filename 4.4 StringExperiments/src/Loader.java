@@ -1,3 +1,8 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.MatchResult;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Loader
 {
@@ -29,14 +34,14 @@ public class Loader
         int aboutMashaStart = text.lastIndexOf(',');
 
         int vasyaSallary = Integer.parseInt(text.substring(text.indexOf('5'), text.indexOf('5')+5).trim());
-        System.out.println(vasyaSallary);
+//        System.out.println(vasyaSallary);
 
         int petyaSallary = Integer.parseInt(text.substring(text.indexOf('7'), text.indexOf('7')+5).trim());
-        System.out.println(petyaSallary);
+//        System.out.println(petyaSallary);
 
         String aboutMashaSallary = text.substring(text.indexOf('3',aboutMashaStart-1));
         int mashaSallary = Integer.parseInt(aboutMashaSallary.substring(0, aboutMashaSallary.indexOf(' ')));
-        System.out.println(mashaSallary);
+//        System.out.println(mashaSallary);
 
 
         System.out.println("Cумма зарплат: " + (mashaSallary + petyaSallary + vasyaSallary));
@@ -47,6 +52,24 @@ public class Loader
 //        Что нужно сделать
 //        Внесите изменения в проект StringExperiments, чтобы суммы заработка каждого человека извлекались из текста
 //        регулярным выражением, а в конце программы рассчитывалась и распечатывалась общая сумма заработка людей.
+        int allSalary = 0;
+//        String[] salaries = text.split("[0-9]");
+
+
+        List<String> allMatches = new ArrayList<String>();
+        Matcher m = Pattern.compile("[0-9]{1,100}")
+                .matcher(text);
+        while (m.find()) {
+            allMatches.add(m.group());
+        }
+        String[] salaries = allMatches.toArray(new String[0]);
+
+        for (String word : salaries) {
+            allSalary += Integer.parseInt(word);
+//            System.out.println(word);
+        }
+
+        System.out.println("Значение allSalary: " + allSalary);
 
 //        Задание №2
 //        Что нужно сделать
