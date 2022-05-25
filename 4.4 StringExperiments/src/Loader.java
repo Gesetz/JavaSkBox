@@ -57,8 +57,8 @@ public class Loader
 
 
         List<String> allMatches = new ArrayList<String>();
-        Matcher m = Pattern.compile("\\d+")
-                .matcher(text);
+        Matcher m = Pattern.compile("\\d+").matcher(text);
+
         while (m.find()) {
             allMatches.add(m.group());
         }
@@ -71,10 +71,33 @@ public class Loader
 
         System.out.println("Значение allSalary: " + allSalary);
 
+
 //        Задание №2
 //        Что нужно сделать
 //        Возьмите английский текст (не менее 100 слов) и напишите программу, которая будет разбивать его на слова и
 //        печатать слова в консоли. Знаки препинания не являются частью слова.
+
+        String engText = "The policy had not been publicly announced, but the reaction was swift. When I checked " +
+                "airline ticket websites, I saw dates for flights in the near future turn gray one after another. " +
+                "In less than an hour, all available slots in the entire month of March were fully booked. Panicking," +
+                " I turned to a travel agent I knew. The next day, she called and offered me an option to fly on" +
+                " March 8 to Shanghai with Hong Kong Airlines. Do you want it or not? Make a decision now, or it'll" +
+                " go away, the agent pressured me.";
+
+        List<String> allWords = new ArrayList<>();
+
+        Matcher m2 = Pattern.compile("[a-zA-Z]+").matcher(engText);
+
+        while (m2.find()) {
+            allWords.add(m2.group());
+        }
+
+        String[] engWords = allWords.toArray(new String[0]);
+
+        for (String word : engWords) {
+            System.out.println(word);
+        }
+
 
 //        Задание №3
 //        Что нужно сделать
